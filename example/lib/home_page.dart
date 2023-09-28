@@ -39,6 +39,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.transparent,
       appBar: AppBar(
         title: const Text('Plugin example app'),
       ),
@@ -65,15 +66,10 @@ class _HomePageState extends State<HomePage> {
             TextButton(
               onPressed: () async {
                 if (await FlutterOverlayWindow.isActive()) return;
-                await FlutterOverlayWindow.showOverlay(
-                  enableDrag: true,
-                  overlayTitle: "X-SLAYER",
-                  overlayContent: 'Overlay Enabled',
-                  flag: OverlayFlag.defaultFlag,
-                  visibility: NotificationVisibility.visibilityPublic,
-                  positionGravity: PositionGravity.auto,
-                  height: 500,
-                  width: WindowSize.matchParent,
+                await FlutterOverlayWindow.showOverlay();
+                await FlutterOverlayWindow.resizeOverlay(
+                  MediaQuery.sizeOf(context).width.toInt(),
+                  MediaQuery.sizeOf(context).height.toInt(),
                 );
               },
               child: const Text("Show Overlay"),

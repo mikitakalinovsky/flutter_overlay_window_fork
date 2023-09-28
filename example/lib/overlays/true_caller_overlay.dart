@@ -39,89 +39,11 @@ class _TrueCallerOverlayState extends State<TrueCallerOverlay> {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      color: Colors.transparent,
-      child: Center(
+    return Scaffold(
+      backgroundColor: Colors.transparent,
+      body: Center(
         child: Container(
-          padding: const EdgeInsets.symmetric(vertical: 12.0),
-          width: double.infinity,
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: isGold ? _goldColors : _silverColors,
-            ),
-            borderRadius: BorderRadius.circular(12.0),
-          ),
-          child: GestureDetector(
-            onTap: () {
-              FlutterOverlayWindow.shareData(
-                  "Heyy this is a data from the overlay");
-            },
-            child: Stack(
-              children: [
-                Column(
-                  children: [
-                    ListTile(
-                      leading: Container(
-                        height: 80.0,
-                        width: 80.0,
-                        decoration: BoxDecoration(
-                          border: Border.all(color: Colors.black54),
-                          shape: BoxShape.circle,
-                          image: const DecorationImage(
-                            image: NetworkImage(
-                                "https://api.multiavatar.com/x-slayer.png"),
-                          ),
-                        ),
-                      ),
-                      title: const Text(
-                        "X-SLAYER",
-                        style: TextStyle(
-                            fontSize: 20.0, fontWeight: FontWeight.bold),
-                      ),
-                      subtitle: const Text("Sousse , Tunisia"),
-                    ),
-                    const Spacer(),
-                    const Divider(color: Colors.black54),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: const [
-                              Text("+216 21065826"),
-                              Text("Last call - 1 min ago"),
-                            ],
-                          ),
-                          const Text(
-                            "Flutter Overlay",
-                            style: TextStyle(
-                                fontSize: 15.0, fontWeight: FontWeight.bold),
-                          ),
-                        ],
-                      ),
-                    )
-                  ],
-                ),
-                Positioned(
-                  top: 0,
-                  right: 0,
-                  child: IconButton(
-                    onPressed: () async {
-                      await FlutterOverlayWindow.closeOverlay();
-                    },
-                    icon: const Icon(
-                      Icons.close,
-                      color: Colors.black,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
+          color: Colors.red.withOpacity(0.6),
         ),
       ),
     );
